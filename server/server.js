@@ -28,6 +28,7 @@ app.use(function(req, res, next) {
 
 app.post('/movies/add', (req, res, next) => {
   const data = req.body;
+  console.log(typeof data);
 });
 
 db.none(`CREATE TABLE IF NOT EXISTS movies(
