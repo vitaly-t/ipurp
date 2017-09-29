@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.5",
+    "morgan": "^1.9.0",
+    "pg-promise": "^6.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devonpatty/ipurp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devonpatty/ipurp/issues"
+  },
+  "description": "website for own needs",
+  "author": "Hoai Nam Duc Tran",
+  "devDependencies": {
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "start": "nodemon -r babel-register server.js"
+  }
+}

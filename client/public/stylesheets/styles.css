@@ -1,0 +1,428 @@
+@import "https://fonts.googleapis.com/css?family=Hind";
+@import "https://fonts.googleapis.com/css?family=Ubuntu";
+@import "https://fonts.googleapis.com/css?family=Poppins";
+@import "https://fonts.googleapis.com/css?family=Fjalla+One";
+/** color:
+  * green - rgb(106, 252, 93)
+  * yellow - rgb(252, 249, 93)
+  * red -
+  * black - rgb(0, 0, 0)
+  * grey - rgb(204, 204, 204)
+  * text-shadow - rgba(0, 0, 0, .2)
+  */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p, a, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Hind', sans-serif;
+	font-weight: bold;
+}
+
+.container {
+
+}
+
+/* header */
+.header {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px;
+  border-color: rgb(204, 204, 204);
+  box-shadow: 0px 0.5px 2px -2px;
+  border-bottom-style: solid;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  padding: 5px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a, a:link, a:visited, a:focus, a:hover, a:active {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
+
+.navigationBarHolder {
+  width: 15%;
+  display: flex;
+  height: 30px;
+}
+
+.navigationBar {
+  width: 100%;
+  height: inherit;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0px;
+  padding: 0px;
+}
+
+.homePageBtn , .moviesBtn, .watchlistBtn {
+  border: 1px solid rgb(135, 135, 135);
+  border-radius: 4px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  border-width: 0.1px;
+  width: 55px;
+  max-height: 28px;
+  height: 28px;
+  background-color: rgb(255, 255, 255);
+}
+
+.homePageBtn:hover , .moviesBtn:hover, .watchlistBtn:hover {
+  background-color: rgba(214, 214, 214, 0.5);
+  box-shadow: 0px 0px 5px rgb(178, 178, 178);
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.homePageBtn:active , .moviesBtn:active, .watchlistBtn:active {
+  background-color: rgba(109, 109, 109, 0.8);
+}
+
+.navigationBar .homePageBtn a, .navigationBar .moviesBtn a, .navigationBar .watchlistBtn a {
+  height: inherit;
+  width: inherit;
+}
+
+.navigationBar .homePageBtn a img, .navigationBar .moviesBtn a img, .navigationBar .watchlistBtn a img {
+}
+
+[data-tooltip] {
+  position: relative;
+  z-index: 100;
+  cursor: pointer;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-tooltip]:before {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 7px;
+  width: 160px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  color: #fff;
+  content: attr(data-tooltip);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  top: 130%;
+  left: 50%;
+  transform: rotate(180deg);
+  margin-left: -5px;
+  width: 0;
+  border-top: 5px solid #000;
+  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+/*
+.sideBar {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  background-color: #f21013;
+}
+
+.sideBarBox ul li {
+  margin: 5px;
+}
+
+.sideBarBox ul li button {
+  width: 100%;
+}
+*/
+
+body {
+  background-color: black;
+}
+
+/* Movies content */
+.movieContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 100px;
+}
+
+.searchBar {
+  width: 15%;
+  margin: 0 42.5%;
+  padding: 0 0 15px 0;
+}
+
+.moviePage {
+  display: flex;
+  width: 10%;
+  justify-content: center;
+  margin: 0 45%;
+  padding: 0 0 15px 0;
+}
+
+.setPages {
+  outline: 0;
+  text-align: center;
+  border-radius: 5px 0 0 10px;
+  padding: 3px;
+  width: 50%;
+  border: 1px solid rgb(219, 219, 219);
+}
+
+.pages {
+  text-align: center;
+  outline: 0;
+  border-radius: 0 10px 5px 0;
+  padding: 3px;
+  width: 50%;
+  color: black;
+  background-color: rgb(226, 226, 226);
+  border-style: solid;
+  border-color: rgb(219, 219, 219);
+  border-top: 0.5px;
+  border-right: 0.5px;
+  border-left: 2px;
+  border-bottom: 0.5px;
+}
+
+.searchBoxForm {
+  border: 0.5px solid #ccc;
+  border-radius: 4px;
+}
+
+.searchBox {
+  display: flex;
+  position: relative;
+  align-items: center;
+  background-color: #fffbf8;
+  box-sizing: border-box;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  border: 0.5px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 8px;
+  padding-left:15px;
+  width: 100%;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus, .searchBtn {
+    outline: 0;
+}
+
+.thumbNail {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 10px 0;
+  width: calc(90vw - 80px);
+  justify-content: space-between;
+}
+
+.searchBtn {
+  right: 1px;
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 42px;
+  height: 30px;
+  background-color: white;
+}
+
+.searchBtn img {
+  position: absolute;
+  bottom: 5px;
+  left: 11px;
+}
+
+.movieWrapper {
+  width: calc(18% - 10px);
+  min-width: calc(18% - 10px);
+  flex: 1 0 auto;
+  height: 100%;;
+  width: 280px;
+  display: flex;
+  margin: 15px 0 ;
+  flex: initial;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.movieThumbNail {
+  position: relative;
+  border: 0.5px solid rgb(255, 255, 255);
+}
+
+.moviePoster {
+  height: 310px;
+  width: 280px;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 1;
+  display: block;
+  transition: 0.25s ease;
+  backface-visibility: hidden;
+}
+
+.movieTemp {
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 10px;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome and Opera */
+}
+
+.movieTitle {
+  font-family: 'Fjalla One', sans-serif;
+  opacity: 0;
+  color: white;
+  font-size: 23px;
+  font-weight: 200;
+  transition: opacity 0.25s ease;
+}
+
+.movieReleaseDate {
+  opacity: 0;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  font-size: 14px;
+  transition: opacity 0.25s ease 0.125s;
+}
+
+.movieOverView {
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  height: calc(100% - 150px);
+  font-size: 13px;
+  font-weight: 200;
+  line-height: 1.4;
+  transition: margin 0.25s ease 0.125s, opacity 0.25s ease 0.125s;
+}
+
+.overview {
+  height: 8000px;
+}
+
+.movieOverView::-webkit-scrollbar {
+  display: none;
+}
+
+.addBtn, .revBtn {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  position: absolute;
+  outline: 0;
+  opacity: 0;
+}
+
+.addBtn {
+  bottom: 20px;
+  left: 20px;
+}
+
+.revBtn {
+  right: 20px;
+  bottom: 20px;
+}
+
+.addBtn:hover, .revBtn:hover {
+  border: 2px solid #ffffff;
+}
+
+.movieThumbNail:hover {
+  box-shadow: inset 0 0 20px rgb(244, 244, 244);
+}
+
+.movieThumbNail:hover .moviePoster {
+  opacity: 0.4;
+}
+
+.movieThumbNail:hover .movieTemp {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.movieThumbNail:hover .movieTemp .movieTitle {
+  opacity: 1;
+}
+
+.movieThumbNail:hover .movieTemp .movieReleaseDate {
+  opacity: 1;
+}
+
+.movieThumbNail:hover .movieTemp .movieOverView {
+  margin-top: 35px;
+  opacity: 1;
+}
+
+.movieThumbNail:hover .movieTemp .addBtn,
+.movieThumbNail:hover .movieTemp .revBtn {
+  opacity: 1;
+}
+
+/**/

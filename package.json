@@ -1,0 +1,24 @@
+
+{
+  "name": "ipurp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devonpatty/ipurp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devonpatty/ipurp/issues"
+  },
+  "description": "website for own needs",
+  "author": "Hoai Nam Duc Tran",
+  "scripts": {
+    "install": "(cd client && yarn) && (cd server && yarn)",
+    "start": "concurrently \"cd client && yarn start\" \"cd server && yarn start\""
+  }
+}
