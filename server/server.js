@@ -26,9 +26,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.post('/movies/add', (req, res, next) => {
+app.post('/api/add', (req, res, next) => {
   const data = req.body;
-  console.log(typeof data);
+  console.log(data);
 });
 
 db.none(`CREATE TABLE IF NOT EXISTS movies(

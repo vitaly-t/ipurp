@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import add_movie_ic from '../images/add_movie_ic.png';
 import remove_movie_ic from '../images/remove_movie_ic.png';
 
@@ -15,25 +16,14 @@ class ThumbNail extends React.Component {
   addMovie(event) {
     event.preventDefault();
     let data = this.props.meta;
-    let movie = {
+    axios.post('/api/add', {
       title: data.movieTitle,
       release: data.movieReleaseDate,
       overview: data.movieOverview,
       poster: 'https://image.tmdb.org/t/p/w500' + data.moviePoster
-    }
-    const request = new Request('http://localhost:3000/movies/add', {
-      method: 'POST',
-      headers: new Headers({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify(movie)
+    }).catch((err) => {
+      console.log(err);
     });
-
-    fetch(request)
-      .then( (res) => {
-        res.json()
-          .then( (data) => {
-            console.log(data)
-          })
-      })
   }
 
   render() {
