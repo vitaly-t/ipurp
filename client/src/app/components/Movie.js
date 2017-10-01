@@ -15,7 +15,6 @@ class Movie extends React.Component {
 
     this.fetchMovieTitle = this.fetchMovieTitle.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.removeChild = this.removeChild.bind(this);
   }
 
   render() {
@@ -44,10 +43,6 @@ class Movie extends React.Component {
     );
   }
 
-  removeChild() {
-
-  }
-
   handleKeyPress(event) {
     if(event.key === 'Enter') {
       this.page = event.target.value;
@@ -67,19 +62,19 @@ class Movie extends React.Component {
 
   } // end function
 
-  //typeof string
+  //movieTitle - typeof String
   fetchMovieTitle(movieTitle) {
     this.query = movieTitle;
     let url = `https://api.themoviedb.org/3/search/movie?api_key=1d1f26ddda9e859fab6bcc7cc41739dc&query=${this.query}&include_adult=false`;
     this.fetchApi(url);
   } // end function
 
-  // typeof obj
+  // thumbnail - typeof Object
   eachThumbNail(thumbnail) {
     const movieObj = thumbnail.results;
-    const arr = {};
+    const movieList = {};
     for(let i = 0; i < movieObj.length; i++) {
-      arr[i] =
+      movieList[i] =
       {
           movieTitle: movieObj[i].title,
           movieOriginalTitle: movieObj[i].original_title,
@@ -92,7 +87,7 @@ class Movie extends React.Component {
       }
     }
     this.setState({
-      movie: arr
+      movie: movieList
     });
   }
 
