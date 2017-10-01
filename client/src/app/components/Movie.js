@@ -6,14 +6,16 @@ class Movie extends React.Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      movie: []
+    };
     this.page = '1';
     this.pageTotal = '';
     this.query = '';
 
     this.fetchMovieTitle = this.fetchMovieTitle.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.removeChild = this.removeChild.bind(this);
   }
 
   render() {
@@ -33,8 +35,8 @@ class Movie extends React.Component {
             <div className="thumbNail">
             {
               Object
-              .keys(this.state)
-              .map((key, i) => <ThumbNail key={i} meta={this.state[key]} />)
+              .keys(this.state.movie)
+              .map((key, i) => <ThumbNail key={i} meta={this.state.movie[key]} />)
             }
             </div>
         }
@@ -42,8 +44,7 @@ class Movie extends React.Component {
     );
   }
 
-  /* reset input textfield to empty */
-  handleSubmit(event) {
+  removeChild() {
 
   }
 
@@ -76,21 +77,23 @@ class Movie extends React.Component {
   // typeof obj
   eachThumbNail(thumbnail) {
     const movieObj = thumbnail.results;
+    const arr = {};
     for(let i = 0; i < movieObj.length; i++) {
-      this.setState({
-        [i]:
-        {
-            movieTitle: movieObj[i].title,
-            movieOriginalTitle: movieObj[i].original_title,
-            movieVoteCount: movieObj[i].vote_count,
-            movieVoteAverage: movieObj[i].vote_average,
-            moviePoster: movieObj[i].poster_path,
-            movieBackdrop: movieObj[i].backdrop_path,
-            movieOverview: movieObj[i].overview,
-            movieReleaseDate: movieObj[i].release_date
-        }
-      });
+      arr[i] =
+      {
+          movieTitle: movieObj[i].title,
+          movieOriginalTitle: movieObj[i].original_title,
+          movieVoteCount: movieObj[i].vote_count,
+          movieVoteAverage: movieObj[i].vote_average,
+          moviePoster: movieObj[i].poster_path,
+          movieBackdrop: movieObj[i].backdrop_path,
+          movieOverview: movieObj[i].overview,
+          movieReleaseDate: movieObj[i].release_date
+      }
     }
+    this.setState({
+      movie: arr
+    });
   }
 
 /*

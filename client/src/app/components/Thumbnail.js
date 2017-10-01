@@ -27,7 +27,6 @@ class ThumbNail extends React.Component {
   }
 
   render() {
-
     let data = this.props.meta;
 
     let movieTitle = data.movieTitle,
