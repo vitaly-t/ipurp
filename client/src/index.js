@@ -3,6 +3,8 @@ import {render} from 'react-dom';
 import App from './app/components/App';
 import { BrowserRouter } from 'react-router-dom';
 import 'whatwg-fetch';
+import './app/stylesheets/styles.css';
+
 require('es6-promise').polyfill();
 
 render((
