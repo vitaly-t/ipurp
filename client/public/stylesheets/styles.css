@@ -2,6 +2,8 @@
 @import "https://fonts.googleapis.com/css?family=Ubuntu";
 @import "https://fonts.googleapis.com/css?family=Poppins";
 @import "https://fonts.googleapis.com/css?family=Fjalla+One";
+@import "https://fonts.googleapis.com/css?family=Mukta";
+
 /** color:
   * green - rgb(106, 252, 93)
   * yellow - rgb(252, 249, 93)
@@ -189,8 +191,8 @@ body {
 }
 
 .searchBar {
-  width: 15%;
-  margin: 0 42.5%;
+  width: 20%;
+  margin: 0 40%;
   padding: 0 0 15px 0;
 }
 
@@ -228,16 +230,28 @@ body {
 }
 
 .searchBoxForm {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  display: flex;
+  width: 100%;
 }
 
 .searchBox {
   display: flex;
   position: relative;
+  width: 80%;
+  margin: 5px;
   align-items: center;
   background-color: #fffbf8;
   box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.options {
+  margin: 5px;
+  border: 0.5px;
+  font-family: 'Mukta', sans-serif;
+  border-radius: 2px 5px 2px 5px;
+  outline: 0;
+  width: 20%;
 }
 
 input[type=text] {
@@ -257,7 +271,7 @@ input[type=text]:focus, .searchBtn {
     outline: 0;
 }
 
-.thumbNail {
+.MovieThumbNail, .TvThumbNail {
   display: flex;
   flex-wrap: wrap;
   margin: 10px 0 10px 0;
@@ -316,6 +330,7 @@ input[type=text]:focus, .searchBtn {
   max-height: 100%;
   height: 100%;
   position: absolute;
+  width: 100%;
   padding: 10px;
   left: 0;
   top: 0;
@@ -370,27 +385,35 @@ input[type=text]:focus, .searchBtn {
   display: none;
 }
 
-.addBtn, .revBtn {
+.buttonHolder {
+  display: flex;
+  position: absolute;
+  width: calc(100% - 40px);
+  bottom: 20px;
+  left: 20px;
+  justify-content: space-between;
+  opacity: 0;
+}
+
+.addMovieBtn, .revMovieBtn, .addTvBtn, .revTvBtn {
   border: 2px solid rgba(255, 255, 255, 0.2);
   width: 32px;
   height: 32px;
   border-radius: 32px;
-  position: absolute;
   outline: 0;
   opacity: 0;
 }
 
-.addBtn {
-  bottom: 20px;
-  left: 20px;
+.addMovieBtn, .addTvBtn {
+
 }
 
-.revBtn {
-  right: 20px;
-  bottom: 20px;
+.revMovieBtn, .revTvBtn {
+
 }
 
-.addBtn:hover, .revBtn:hover {
+.addMovieBtn:hover, .revMovieBtn:hover,
+.addTvBtn:hover, .revTvBtn:hover {
   border: 2px solid #ffffff;
 }
 
@@ -420,8 +443,14 @@ input[type=text]:focus, .searchBtn {
   opacity: 1;
 }
 
-.movieThumbNail:hover .movieTemp .addBtn,
-.movieThumbNail:hover .movieTemp .revBtn {
+.movieThumbNail:hover .movieTemp .buttonHolder {
+  opacity: 1;
+}
+
+.movieThumbNail:hover .movieTemp .buttonHolder .addMovieBtn,
+.movieThumbNail:hover .movieTemp .buttonHolder .revMovieBtn,
+.movieThumbNail:hover .movieTemp .buttonHolder .addTvBtn,
+.movieThumbNail:hover .movieTemp .buttonHolder .revTvBtn {
   opacity: 1;
 }
 

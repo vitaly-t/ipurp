@@ -4,7 +4,7 @@ import axios from 'axios';
 import add_movie_ic from '../images/add_movie_ic.png';
 import remove_movie_ic from '../images/remove_movie_ic.png';
 
-class ThumbNail extends React.Component {
+class MovieThumbnail extends React.Component {
 
   constructor() {
     super();
@@ -16,7 +16,8 @@ class ThumbNail extends React.Component {
   addMovie(event) {
     event.preventDefault();
     let data = this.props.meta;
-    axios.post('/api/add', {
+    axios.post('/api/movie/add', {
+      id: data.movieId,
       title: data.movieTitle,
       release: data.movieReleaseDate,
       overview: data.movieOverview,
@@ -42,6 +43,10 @@ class ThumbNail extends React.Component {
       movieOverview = "this movie doesn´t have any overview";
     }
 
+    if(movieReleaseDate === "") {
+      movieReleaseDate = "--:--:--";
+    }
+
     if(data.moviePoster == null) {
       moviePoster = 'https://cdn.amctheatres.com/Media/Default/Images/noposter.jpg';
     }
@@ -56,8 +61,10 @@ class ThumbNail extends React.Component {
             <div className="movieOverView">
               <span className="overview">{movieOverview}</span>
             </div>
-            <input className="addBtn" onClick={this.addMovie} type="image" src={add_movie_ic} alt="addBtn"/>
-            <input className="revBtn" type="image" src={remove_movie_ic} alt="revBtn"/>
+            <div className="buttonHolder">
+              <input className="addMovieBtn" onClick={this.addMovie} type="image" src={add_movie_ic} alt="addBtn"/>
+              <input className="revMovieBtn" type="image" src={remove_movie_ic} alt="revBtn"/>
+            </div>
           </div>
         </div>
       </div>
@@ -69,4 +76,4 @@ class ThumbNail extends React.Component {
   }
 }
 
-export default ThumbNail;
+export default MovieThumbnail;

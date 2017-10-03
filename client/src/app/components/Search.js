@@ -6,22 +6,35 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      searchValue: '',
+      optionValue: 'movie'
+    };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleSearchChange(event) {
     this.setState({
-      value: event.target.value
+      searchValue: event.target.value
+    });
+  }
+
+  handleOptionChange(event) {
+    this.setState({
+      optionValue: event.target.value
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit(this.state.value);
-    this.state = {value: ''};
+    this.props.onSubmit(this.state);
+    console.log("before: ", this.state);
+    this.setState({
+      searchValue: ''
+    });
   }
 
   render() {
@@ -29,11 +42,15 @@ class Search extends React.Component {
       <div className="searchBar">
         <form className="searchBoxForm" onSubmit={this.handleSubmit}>
           <div className="searchBox">
-            <input type="text" value={this.state.value} onChange={this.handleChange} placeholder="Search movies, Tv shows, etc."/>
+            <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} placeholder="search here.."/>
             <button className="searchBtn" type="submit">
               <img src={search_ic} alt="srcBtn"/>
             </button>
           </div>
+          <select className="options" value={this.state.optionValue} onChange={this.handleOptionChange}>
+            <option value="movie">Movie</option>
+            <option value="tv">Tv</option>
+          </select>
         </form>
       </div>
     );
