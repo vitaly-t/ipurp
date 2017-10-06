@@ -1,28 +1,35 @@
 import React from 'react';
 import axios from 'axios';
+import WatchlistCategory from './WatchlistCategory';
 
 class Watchlist extends React.Component {
 
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      data: []
+    };
   }
 
   componentDidMount() {
     axios.get('/api/watchlist')
     .then( (res) => {
-      console.log(res.data);
+      this.setState({
+        data: res.data
+      });
     })
     .catch( (err) => {
       console.log(err);
     });
   }
 
-  render() {
-    return(
-      <div>
 
+  render() {
+
+    return (
+      <div>
+        <WatchlistCategory data={this.state.data} />
       </div>
     );
   }

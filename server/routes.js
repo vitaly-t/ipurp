@@ -34,13 +34,21 @@ router.post('/api/movie/add', (req, res, next) => {
 });
 
 router.get('/api/watchlist', (req, res, next) => {
-  db.any(`SELECT * FROM watchlist`)
+  db.task(t => {
+    return t.batch([
+      t.any(`SELECT * FROM watchlist WHERE type='tv'`),
+      t.any(`SELECT * FROM watchlist WHERE type='movie'`)
+    ])
     .then(data => {
-      res.send(data)
-    })
-    .catch(err => {
-
+      let obj = {};
+      obj["tv"] = data[0];
+      obj["movie"] = data[1];
+      return obj;
     });
+  })
+  .then(data => {
+    res.send(data);
+  });
 });
 
 module.exports = router;
