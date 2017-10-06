@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import add_movie_ic from '../images/add_movie_ic.png';
 import remove_movie_ic from '../images/remove_movie_ic.png';
+import noposter from '../images/noposter.jpg';
 
 class MovieThumbnail extends React.Component {
 
@@ -16,12 +16,12 @@ class MovieThumbnail extends React.Component {
   addMovie(event) {
     event.preventDefault();
     let data = this.props.meta;
+    console.log(data);
     axios.post('/api/movie/add', {
       id: data.movieId,
       title: data.movieTitle,
       release: data.movieReleaseDate,
-      overview: data.movieOverview,
-      poster: 'https://image.tmdb.org/t/p/w500' + data.moviePoster
+      type: data.type
     }).catch((err) => {
       console.log(err);
     });
@@ -48,7 +48,7 @@ class MovieThumbnail extends React.Component {
     }
 
     if(data.moviePoster == null) {
-      moviePoster = 'https://cdn.amctheatres.com/Media/Default/Images/noposter.jpg';
+      moviePoster = noposter;
     }
 
     return (

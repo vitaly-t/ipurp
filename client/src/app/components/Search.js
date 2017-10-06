@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import search_ic from '../images/search_ic.png';
 
 class Search extends React.Component {
@@ -30,11 +29,13 @@ class Search extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.onSubmit(this.state);
-    console.log("before: ", this.state);
-    this.setState({
-      searchValue: ''
-    });
+    if(this.state.searchValue !== '') {
+      this.props.onSubmit(this.state);
+      console.log("before: ", this.state);
+      this.setState({
+        searchValue: ''
+      });
+    }
   }
 
   render() {

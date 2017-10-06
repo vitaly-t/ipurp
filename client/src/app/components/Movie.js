@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from './Search';
 import MovieThumbNail from './MovieThumbnail';
-import TvThumbNail from './TvThumbnail';
 
 class Movie extends React.Component {
   constructor() {
@@ -32,14 +31,7 @@ class Movie extends React.Component {
     fetch(url).then((res) => res.json()).then((data) => {
       // update state with API data
       this.pageTotal = data.total_pages;
-      switch(this.type) {
-        case "movie":
-          this.movieThumbNail(data);
-          break;
-        case "tv":
-          this.tvThumbNail(data);
-          break;
-      }
+      this.movieThumbNail(data);
     });
 
     // .catch((err) => console.log('Movie not found!'))
@@ -62,41 +54,21 @@ class Movie extends React.Component {
       movieList[i] =
       {
         movieId: movieObj[i].id,
-        movieTitle: movieObj[i].title,
-        movieOriginalTitle: movieObj[i].original_title,
+        movieTitle: movieObj[i].title || movieObj[i].name,
+        movieOriginalTitle: movieObj[i].original_title || movieObj[i].original_name,
         movieVoteCount: movieObj[i].vote_count,
         movieVoteAverage: movieObj[i].vote_average,
         moviePoster: movieObj[i].poster_path,
         movieBackdrop: movieObj[i].backdrop_path,
         movieOverview: movieObj[i].overview,
-        movieReleaseDate: movieObj[i].release_date
+        movieReleaseDate: movieObj[i].release_date || movieObj[i].first_air_date,
+        type: this.type
       }
     }
     this.setState({
       movie: movieList
     });
-  }
-
-  tvThumbNail(thumbnail) {
-    const tvObj = thumbnail.results;
-    const tvList = {};
-    for(let i = 0; i < tvObj.length; i++) {
-      tvList[i] =
-      {
-        tvId: tvObj[i].id,
-        tvName: tvObj[i].name,
-        tvOriginalName: tvObj[i].original_name,
-        tvVoteCount: tvObj[i].vote_count,
-        tvVoteAverage: tvObj[i].vote_average,
-        tvPoster: tvObj[i].poster_path,
-        tvBackdrop: tvObj[i].backdrop_path,
-        tvOverview: tvObj[i].overview,
-        tvAirDate: tvObj[i].first_air_date
-      }
-    }
-    this.setState({
-      movie: tvList
-    });
+    console.log(this.state.movie);
   }
 
   renderPage() {
@@ -130,30 +102,13 @@ class Movie extends React.Component {
     }
   }
 
-  renderTvThumbnail() {
-    if(Object.keys(this.state).length === 0 && this.state.constructor === Object) {
-      return null;
-    }
-    else {
-      return (
-        <div className="TvThumbNail">
-        {
-          Object
-          .keys(this.state.movie)
-          .map((key, i) => <TvThumbNail key={i} meta={this.state.movie[key]} />)
-        }
-        </div>
-      );
-    }
-  }
-
   render() {
 
     return (
       <div className="movieContainer">
         <Search onSubmit={this.fetchMovieTitle} />
         { this.renderPage() }
-        { this.type === "movie" ? this.renderMovieThumbnail() : this.renderTvThumbnail() }
+        { this.renderMovieThumbnail() }
       </div>
     );
   }

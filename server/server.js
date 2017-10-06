@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const db = require('./dbConnect');
 const routes = require('./routes');
 const PORT = 5000;
 

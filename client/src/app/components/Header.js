@@ -13,25 +13,19 @@ class Header extends React.Component {
         <nav className="navigationBarHolder">
           <ul className="navigationBar">
             <li>
-              <button className="homePageBtn" data-tooltip="home page">
-                <Link to="/">
-                  <img src={home_ic} alt="home" />
-                </Link>
-              </button>
+              <Link to="/" className="homePageBtn" data-tooltip="home page">
+                <img src={home_ic} alt="home" />
+              </Link>
             </li>
             <li>
-              <button className="moviesBtn" data-tooltip="search movies">
-                <Link to="/movies">
-                  <img src={movies_ic} alt="movies" />
-                </Link>
-              </button>
+              <Link to="/movies" className="moviesBtn" data-tooltip="search movies">
+                <img src={movies_ic} alt="movies" />
+              </Link>
             </li>
             <li>
-              <button className="watchlistBtn" data-tooltip="check watchlist">
-                <Link to="/watchlists">
-                  <img src={watchlist_ic} alt="watchlist" />
-                </Link>
-              </button>
+              <Link to="/watchlists" className="watchlistBtn" data-tooltip="check watchlist">
+                <img src={watchlist_ic} alt="watchlist" />
+              </Link>
             </li>
           </ul>
         </nav>
