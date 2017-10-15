@@ -3,6 +3,7 @@ import axios from 'axios';
 import add_movie_ic from '../images/add_movie_ic.png';
 import remove_movie_ic from '../images/remove_movie_ic.png';
 import noposter from '../images/noposter.jpg';
+import '../stylesheets/movieThumbnail.css';
 
 class MovieThumbnail extends React.Component {
 
@@ -21,7 +22,9 @@ class MovieThumbnail extends React.Component {
       id: data.movieId,
       title: data.movieTitle,
       release: data.movieReleaseDate,
-      type: data.type
+      type: data.type,
+      poster: data.moviePoster,
+      addDate: new Date()
     }).catch((err) => {
       console.log(err);
     });

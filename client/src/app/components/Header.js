@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import home_ic from '../images/home_ic.png';
 import movies_ic from '../images/movies_ic.png';
 import watchlist_ic from '../images/watchlist_ic.png';
-
+import '../stylesheets/header.css';
 // The Header creates links that can be used to navigate
 // between routes.
 class Header extends React.Component {

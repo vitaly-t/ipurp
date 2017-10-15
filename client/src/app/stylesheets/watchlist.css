@@ -1,0 +1,19 @@
+.watchlistContainer {
+  margin: 100px;
+}
+
+.tvContainer {
+  color: white;
+}
+
+.moviesContainer {
+  color: white;
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0 10px 0;
+  width: calc(90vw - 80px);
+  justify-content: space-between;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import search_ic from '../images/search_ic.png';
+import '../stylesheets/search.css';
 
 class Search extends React.Component {
 

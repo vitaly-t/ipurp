@@ -1,6 +1,7 @@
 import React from 'react';
 import Search from './Search';
 import MovieThumbNail from './MovieThumbnail';
+import '../stylesheets/movie.css';
 
 class Movie extends React.Component {
   constructor() {

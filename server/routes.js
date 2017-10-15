@@ -10,7 +10,9 @@ db.none(`CREATE TABLE IF NOT EXISTS watchlist(
           movieId   varchar(100),
           title     varchar(65),
           release   varchar(65),
-          type      varchar(10)
+          type      varchar(10),
+          poster    varchar(65),
+          addDate   timestamp
         )`)
 .then( () => {
   console.log("watchlist database has been created");
@@ -21,8 +23,8 @@ db.none(`CREATE TABLE IF NOT EXISTS watchlist(
 
 router.post('/api/movie/add', (req, res, next) => {
   const data = req.body;
-  db.one(`INSERT INTO watchlist(movieId, title, release, type)
-        VALUES($1, $2, $3, $4)`, [data.id, data.title, data.release, data.type])
+  db.one(`INSERT INTO watchlist(movieId, title, release, type, poster, addDate)
+        VALUES($1, $2, $3, $4, $5, $6)`, [data.id, data.title, data.release, data.type, data.poster, data.addDate])
         .then(data => {
           //success
           //console.log(data);
