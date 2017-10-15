@@ -92,12 +92,12 @@
   position: absolute;
   width: calc(100% - 40px);
   bottom: 20px;
-  left: 20px;
+  left: calc(100%/2 - 20px);
   justify-content: space-between;
   opacity: 0;
 }
 
-.addMovieBtn, .revMovieBtn, .addTvBtn, .revTvBtn {
+.addMovieBtn {
   border: 2px solid rgba(255, 255, 255, 0.2);
   width: 32px;
   height: 32px;
@@ -106,16 +106,7 @@
   opacity: 0;
 }
 
-.addMovieBtn, .addTvBtn {
-
-}
-
-.revMovieBtn, .revTvBtn {
-
-}
-
-.addMovieBtn:hover, .revMovieBtn:hover,
-.addTvBtn:hover, .revTvBtn:hover {
+.addMovieBtn:hover {
   border: 2px solid #ffffff;
 }
 
@@ -149,9 +140,6 @@
   opacity: 1;
 }
 
-.movieThumbNail:hover .movieTemp .buttonHolder .addMovieBtn,
-.movieThumbNail:hover .movieTemp .buttonHolder .revMovieBtn,
-.movieThumbNail:hover .movieTemp .buttonHolder .addTvBtn,
-.movieThumbNail:hover .movieTemp .buttonHolder .revTvBtn {
+.movieThumbNail:hover .movieTemp .buttonHolder .addMovieBtn {
   opacity: 1;
 }

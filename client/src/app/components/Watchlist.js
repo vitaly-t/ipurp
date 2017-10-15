@@ -14,6 +14,10 @@ class Watchlist extends React.Component {
   }
 
   componentDidMount() {
+    this.getMovie();
+  }
+
+  getMovie() {
     axios.get('/api/watchlist')
     .then( (res) => {
       this.setState({
@@ -55,11 +59,11 @@ class Watchlist extends React.Component {
     return (
       <div className="watchlistContainer">
         <div className="tvContainer">
-          <div>Tv shows</div>
+          <div className="tile">Tv shows</div>
           { this.renderTvCategory() }
         </div>
         <div className="moviesContainer">
-          <div>Movies</div>
+          <div className="tile">Movies</div>
           { this.renderMovieCategory() }
         </div>
       </div>

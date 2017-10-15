@@ -7,7 +7,7 @@ const db = pgp(cn);
 
 db.none(`CREATE TABLE IF NOT EXISTS watchlist(
           id        SERIAL PRIMARY KEY,
-          movieId   varchar(100),
+          movieId   varchar(100) UNIQUE,
           title     varchar(65),
           release   varchar(65),
           type      varchar(10),
@@ -21,7 +21,7 @@ db.none(`CREATE TABLE IF NOT EXISTS watchlist(
   console.log(err);
 });
 
-router.post('/api/movie/add', (req, res, next) => {
+router.post('/api/add', (req, res, next) => {
   const data = req.body;
   db.one(`INSERT INTO watchlist(movieId, title, release, type, poster, addDate)
         VALUES($1, $2, $3, $4, $5, $6)`, [data.id, data.title, data.release, data.type, data.poster, data.addDate])
@@ -51,6 +51,18 @@ router.get('/api/watchlist', (req, res, next) => {
   .then(data => {
     res.send(data);
   });
+});
+
+router.post('/api/remove', (req, res, next) => {
+  const data = req.body;
+  db.one(`DELETE FROM watchlist WHERE id=$1 AND movieid=$2 AND title=$3`, [data.id, data.movieid, data.title])
+    .then(data => {
+
+    })
+    .catch(err => {
+
+    });
+  res.sendStatus(200);
 });
 
 module.exports = router;

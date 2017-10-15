@@ -1,5 +1,15 @@
 .watchlistContainer {
-  margin: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px 100px;
+}
+
+.tile {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-size: 40px;
+  font-weight: 300;
 }
 
 .tvContainer {

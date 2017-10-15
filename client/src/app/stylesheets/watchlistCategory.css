@@ -1,6 +1,6 @@
 .categoryContainer {
   width: calc(18% - 10px);
-  min-width: calc(18% - 10px);
+  max-width: calc(18% - 10px);
   flex: 1 0 auto;
   height: 100%;
   width: 280px;
@@ -63,4 +63,53 @@
   color: white;
   font-size: 14px;
   transition: opacity 0.25s ease 0.125s;
+}
+
+.buttonHolder {
+  display: flex;
+  position: absolute;
+  width: calc(100% - 40px);
+  bottom: 20px;
+  left: calc(100%/2 - 20px);
+  justify-content: space-between;
+  opacity: 0;
+}
+
+.revMovieBtn {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  outline: 0;
+  opacity: 0;
+}
+
+.revMovieBtn:hover {
+  border: 2px solid #ffffff;
+}
+
+.categoryContainer:hover {
+  box-shadow: inset 0 0 20px rgb(244, 244, 244);
+}
+
+.categoryContainer:hover .containerImage {
+  opacity: 0.4;
+}
+
+.categoryContainer:hover .info {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.categoryContainer:hover .info .title,
+.categoryContainer:hover .info .release {
+  opacity: 1;
+}
+
+.categoryContainer:hover .info .buttonHolder {
+  opacity: 1;
+}
+
+.categoryContainer:hover .info .buttonHolder .revMovieBtn {
+  opacity: 1;
 }

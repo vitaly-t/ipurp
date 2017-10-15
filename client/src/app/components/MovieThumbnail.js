@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import add_movie_ic from '../images/add_movie_ic.png';
-import remove_movie_ic from '../images/remove_movie_ic.png';
 import noposter from '../images/noposter.jpg';
 import '../stylesheets/movieThumbnail.css';
 
@@ -18,7 +17,7 @@ class MovieThumbnail extends React.Component {
     event.preventDefault();
     let data = this.props.meta;
     console.log(data);
-    axios.post('/api/movie/add', {
+    axios.post('/api/add', {
       id: data.movieId,
       title: data.movieTitle,
       release: data.movieReleaseDate,
@@ -66,7 +65,6 @@ class MovieThumbnail extends React.Component {
             </div>
             <div className="buttonHolder">
               <input className="addMovieBtn" onClick={this.addMovie} type="image" src={add_movie_ic} alt="addBtn"/>
-              <input className="revMovieBtn" type="image" src={remove_movie_ic} alt="revBtn"/>
             </div>
           </div>
         </div>
